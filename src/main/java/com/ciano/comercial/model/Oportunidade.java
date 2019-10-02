@@ -3,6 +3,9 @@ package com.ciano.comercial.model;
 import java.math.BigDecimal;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Oportunidade {
@@ -11,10 +14,16 @@ public class Oportunidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotEmpty
+	@Size(max = 100)
 	@Column(name = "nome_prospecto")
 	private String nomeProspecto;
 
+	@NotEmpty
+	@Size(max = 255)
 	private String descricao;
+	
+	@Min(0)
 	private BigDecimal valor;
 	
 	public Oportunidade() {
